@@ -1,14 +1,9 @@
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
-import Schema from "@deepseek-ai/schemastery";
 
 const SETTINGS_FILE = "/root/.dsh/settings.yaml";
 
 export const name = "j-space";
 export const inject = ["webServer"];
-
-export const Config = Schema.object({
-  mode: Schema.union(["on-demand", "always-on", "auto", "off"]).default("on-demand").description("J-Space 认知控制激活模式"),
-});
 
 function getMode() {
   try {
