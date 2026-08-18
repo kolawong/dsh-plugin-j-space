@@ -404,6 +404,7 @@ window.__ModuleLoader__.load({
         sctx.slots.inject("settings.plugin.item", function* () {
           yield sctx.slots.register({
             name: "settings.plugin.item",
+            key: "j-space",
             id: "j-space",
             order: 5
           }, JSpaceCard);
