@@ -1,6 +1,4 @@
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
-import path from "node:path";
-import yaml from "js-yaml";
 import Schema from "@deepseek-ai/schemastery";
 
 const SETTINGS_FILE = "/root/.dsh/settings.yaml";
@@ -15,8 +13,9 @@ export const Config = Schema.object({
 function getMode() {
   try {
     if (existsSync(SETTINGS_FILE)) {
-      const doc = yaml.load(readFileSync(SETTINGS_FILE, "utf8")) || {};
-      return doc["j-space"]?.mode || "on-demand";
+      const content = readFileSync(SETTINGS_FILE, "utf8");
+      const match = content.match(/j-space:\s*\n\s*mode:\s*([^\s\n]+)/);
+      if (match) return match[1].replace(/['"]/g, "");
     }
   } catch {}
   return "on-demand";
@@ -24,13 +23,13 @@ function getMode() {
 
 function setMode(mode) {
   try {
-    let doc = {};
-    if (existsSync(SETTINGS_FILE)) {
-      doc = yaml.load(readFileSync(SETTINGS_FILE, "utf8")) || {};
+    let content = existsSync(SETTINGS_FILE) ? readFileSync(SETTINGS_FILE, "utf8") : "";
+    if (/j-space:\s*\n\s*mode:/.test(content)) {
+      content = content.replace(/(j-space:\s*\n\s*mode:\s*)([^\s\n]+)/, `$1${mode}`);
+    } else {
+      content += `\nj-space:\n  mode: ${mode}\n`;
     }
-    if (!doc["j-space"]) doc["j-space"] = {};
-    doc["j-space"].mode = mode;
-    writeFileSync(SETTINGS_FILE, yaml.dump(doc), "utf8");
+    writeFileSync(SETTINGS_FILE, content, "utf8");
     return true;
   } catch (err) {
     console.error("[J-Space] Failed to save mode:", err);
