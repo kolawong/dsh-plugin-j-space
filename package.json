@@ -1,0 +1,53 @@
+{
+  "name": "@custom/dsh-plugin-j-space",
+  "version": "3.6.0",
+  "description": "J-Space Cognition Suite V3.6 - Inference-time cognitive control and deep reasoning for DeepSeek models",
+  "type": "module",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "skills",
+    "README.md",
+    "README_CN.md",
+    "LICENSE",
+    "NOTICE",
+    "CITATION.cff"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-settings-plugins"
+      ],
+      "platform": "web"
+    },
+    "skills": [
+      "./skills/j-space"
+    ]
+  },
+  "keywords": [
+    "deepseek",
+    "cognition",
+    "reasoning",
+    "j-space",
+    "dsh-plugin"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kolawong/dsh-plugin-j-space.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kolawong/dsh-plugin-j-space/issues"
+  },
+  "homepage": "https://github.com/kolawong/dsh-plugin-j-space#readme"
+}

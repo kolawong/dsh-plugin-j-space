@@ -1,0 +1,5 @@
+- insert:
+    - id: j-space
+      name: @custom/dsh-plugin-j-space
+      config:
+        mode: on-demand

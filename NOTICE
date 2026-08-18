@@ -1,0 +1,13 @@
+@custom/dsh-plugin-j-space (J-Space Cognition Suite for DeepSeek Harness)
+Copyright 2026
+
+This product includes software developed as part of:
+- J-Space Cognition Suite V3.6 (https://github.com/Tiger3807861189/J-Space-Cognition-Suite-V3.6)
+  Copyright 2026 Tiger3807861189
+  Licensed under the Apache License, Version 2.0.
+
+Scientific Foundation:
+- Anthropic Interpretability Research: Gurnee et al. (2026) on privileged internal representational workspace ("J-space").
+
+DeepSeek Harness Packaging:
+- Packaged as a standard DeepSeek Harness plugin and Cordis service bundle.
