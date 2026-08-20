@@ -4,6 +4,9 @@
   "description": "J-Space Cognition Suite V3.6 - Inference-time cognitive control and deep reasoning for DeepSeek models",
   "type": "module",
   "main": "index.js",
+  "scripts": {
+    "test": "node --test"
+  },
   "files": [
     "index.js",
     "client.js",
