@@ -9,12 +9,16 @@
     "client.js",
     "cordis.patch.yml",
     "skills",
+    "tests",
     "README.md",
     "README_CN.md",
     "LICENSE",
     "NOTICE",
     "CITATION.cff"
   ],
+  "scripts": {
+    "test": "node tests/inject.test.mjs"
+  },
   "exports": {
     ".": "./index.js",
     "./client": "./client.js",
